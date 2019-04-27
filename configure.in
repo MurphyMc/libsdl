@@ -1646,6 +1646,19 @@ AC_HELP_STRING([--enable-video-dummy], [use dummy video driver [[default=yes]]])
     fi
 }
 
+dnl rcg04172001 Set up the mem video driver.
+CheckMemVideo()
+{
+    AC_ARG_ENABLE(video-mem,
+AC_HELP_STRING([--enable-video-mem], [use memory video driver [[default=yes]]]),
+                  , enable_video_mem=yes)
+    if test x$enable_video_mem = xyes; then
+        AC_DEFINE(SDL_VIDEO_DRIVER_MEM)
+        SOURCES="$SOURCES $srcdir/src/video/mem/*.c"
+        have_video=yes
+    fi
+}
+
 dnl Check to see if OpenGL support is desired
 AC_ARG_ENABLE(video-opengl,
 AC_HELP_STRING([--enable-video-opengl], [include OpenGL context creation [[default=yes]]]),
@@ -2347,6 +2360,7 @@ case "$host" in
         esac
         CheckVisibilityHidden
         CheckDummyVideo
+        CheckMemVideo
         CheckDiskAudio
         CheckDummyAudio
         CheckDLOPEN
