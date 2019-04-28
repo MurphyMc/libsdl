@@ -416,6 +416,9 @@ extern VideoBootStrap DUMMY_bootstrap;
 #if SDL_VIDEO_DRIVER_MEM
 extern VideoBootStrap Mem_bootstrap;
 #endif
+#if SDL_VIDEO_DRIVER_VNC
+extern VideoBootStrap VNC_bootstrap;
+#endif
 
 /* This is the current video device */
 extern SDL_VideoDevice *current_video;
