@@ -126,6 +126,9 @@ static VideoBootStrap *bootstrap[] = {
 #if SDL_VIDEO_DRIVER_CACA
 	&CACA_bootstrap,
 #endif
+#ifdef SDL_VIDEO_DRIVER_SDLUXER
+	&SDLuxer_bootstrap,
+#endif
 #ifdef SDL_VIDEO_DRIVER_VNC
 	&VNC_bootstrap,
 #endif
