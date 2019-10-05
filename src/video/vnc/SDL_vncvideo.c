@@ -42,7 +42,6 @@ TODO
 #include <sys/stat.h>
 #include <sys/mman.h>
 #include <sys/types.h>
-#include <fcntl.h>
 
 
 #include "SDL.h"
@@ -331,7 +330,7 @@ SDL_Surface *VNC_SetVideoMode(_THIS, SDL_Surface *current,
         int width, int height, int bpp, Uint32 flags)
 {
   if ( VNC_buffer ) {
-    munmap( VNC_buffer, VNC_buffer_size );
+    free( VNC_buffer );
     VNC_buffer = NULL;
     VNC_buffer_size = 0;
   }
@@ -498,7 +497,7 @@ void VNC_VideoQuit(_THIS)
   }
 
   if ( VNC_buffer ) {
-    munmap( VNC_buffer, VNC_buffer_size );
+    free( VNC_buffer );
     VNC_buffer = NULL;
   }
 

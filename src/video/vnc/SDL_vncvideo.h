@@ -45,14 +45,10 @@ static char rcsid =
 /* Private display data */
 struct SDL_PrivateVideoData {
   SDL_Rect *SDL_modelist[SDL_NUMMODES+1];
-  SDL_mutex *mutex;
 
   void *buffer;
   int buffer_size;
   int w, h;
-
-//	int lastkey;
-//	struct timeval lasttime;
 
   int client_count;
   rfbScreenInfoPtr screen;
@@ -73,12 +69,6 @@ struct SDL_PrivateVideoData {
 
 #define VNC_w		    (this->hidden->w)
 #define VNC_h		    (this->hidden->h)
-
-//#define VNC_lastkey		    (this->hidden->lastkey)
-//#define VNC_lasttime		    (this->hidden->lasttime)
-
-//#define VNC_mutex		    (this->hidden->mutex)
-
 
 #endif /* _SDL_vncvideo_h */
 
